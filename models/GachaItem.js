@@ -10,9 +10,16 @@ const GachaItemSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    haravan_variant_id: { // <-- THÊM TRƯỜNG NÀY: ID của biến thể trên Haravan
+    // --- THÊM TRƯỜNG MỚI TẠI ĐÂY ---
+    haravan_product_handle: { // Handle của sản phẩm trên Haravan (dùng để tạo URL)
         type: String,
-        required: false // Có thể là false nếu bạn có item không phải là sản phẩm Haravan hoặc không có biến thể
+        required: false, // Đặt là false để các item cũ không bị lỗi, nhưng item mới nên có
+        trim: true
+    },
+    // ---------------------------------
+    haravan_variant_id: { // ID của biến thể trên Haravan
+        type: String,
+        required: false 
     },
     image_url: {
         type: String,
