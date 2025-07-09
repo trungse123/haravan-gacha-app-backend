@@ -221,6 +221,7 @@ app.post('/api/gacha/spin', async (req, res) => {
                         product_id: wonItem.haravan_product_id,
                         quantity: 1,
                         price: 0, // Giá 0đ vì đã thanh toán bằng xu
+                        ...(wonItem.haravan_variant_id && { variant_id: wonItem.haravan_variant_id })
                     }],
                     customer: {
                         id: customer_id // Chỉ dùng ID, Haravan sẽ tự lấy thông tin đã có
