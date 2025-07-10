@@ -87,7 +87,9 @@ app.get('/api/gacha/items', async (req, res) => {
         if (gachaPoolId) {
             query.gacha_pool_id = gachaPoolId;
         }
-        const items = await GachaItem.find(query).select('-__v -createdAt -updatedAt'); // Lấy tất cả và bỏ các trường không cần thiết
+       const items = await GachaItem.find(query)
+                                     .sort({ rank_order: 1, name: 1 }) // <-- THÊM SẮP XẾP Ở ĐÂY
+                                     .select('-__v -createdAt -updatedAt');
 
         res.json(items);
 
@@ -221,7 +223,6 @@ app.post('/api/gacha/spin', async (req, res) => {
                         product_id: wonItem.haravan_product_id,
                         quantity: 1,
                         price: 0, // Giá 0đ vì đã thanh toán bằng xu
-                        ...(wonItem.haravan_variant_id && { variant_id: wonItem.haravan_variant_id })
                     }],
                     customer: {
                         id: customer_id // Chỉ dùng ID, Haravan sẽ tự lấy thông tin đã có
