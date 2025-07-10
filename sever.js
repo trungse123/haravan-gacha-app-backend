@@ -228,7 +228,7 @@ app.post('/api/gacha/spin', async (req, res) => {
                         id: customer_id // Chỉ dùng ID, Haravan sẽ tự lấy thông tin đã có
                     },
                     financial_status: 'paid', // Coi như đã thanh toán bằng xu
-                    // fulfillment_status: 'unfulfilled', // Ban đầu chưa giao
+                    // fulfillment_status: 'fulfilled', // Ban đầu chưa giao
                     note: `Vật phẩm trúng Gacha: ${wonItem.name} (Pool: ${gacha_pool_id})`,
                     tags: 'Gacha_Reward' // Gắn tag để dễ quản lý
                 }
