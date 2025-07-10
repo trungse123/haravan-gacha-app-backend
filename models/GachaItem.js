@@ -30,6 +30,11 @@ const GachaItemSchema = new mongoose.Schema({
         enum: ['S', 'A', 'B', 'C', 'D', 'F'],
         required: true
     },
+    rank_order: { // <-- THÊM TRƯỜNG NÀY: Giá trị số để sắp xếp Rank
+        type: Number,
+        required: true,
+        default: 99 // Giá trị mặc định nếu không được set, để nó nằm cuối
+    },
     base_price: { // Giá trị cơ bản của vật phẩm (để tham khảo)
         type: Number,
         required: true
